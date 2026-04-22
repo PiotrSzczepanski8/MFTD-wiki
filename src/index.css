@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Deep ocean dark theme — fishing tower defense wiki */
+    --background: 210 45% 6%;
+    --foreground: 200 30% 92%;
+
+    --card: 210 40% 9%;
+    --card-foreground: 200 30% 92%;
+
+    --popover: 210 40% 9%;
+    --popover-foreground: 200 30% 92%;
+
+    /* Lime glow — primary accent */
+    --primary: 84 80% 55%;
+    --primary-foreground: 210 50% 8%;
+
+    /* Cyan sea — secondary accent */
+    --secondary: 188 80% 50%;
+    --secondary-foreground: 210 50% 8%;
+
+    --muted: 210 30% 14%;
+    --muted-foreground: 200 15% 62%;
+
+    --accent: 188 70% 30%;
+    --accent-foreground: 200 30% 95%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 200 30% 98%;
+
+    --border: 210 30% 16%;
+    --input: 210 30% 14%;
+    --ring: 84 80% 55%;
+
+    --radius: 0.75rem;
+
+    /* Category accents */
+    --category-fisherman: 220 10% 75%;
+    --category-fish: 215 85% 60%;
+    --category-mechanics: 188 85% 55%;
+
+    /* Gradients */
+    --gradient-deep: linear-gradient(180deg, hsl(210 50% 8%) 0%, hsl(210 60% 4%) 100%);
+    --gradient-hero: radial-gradient(ellipse at top, hsl(188 70% 25% / 0.4) 0%, transparent 60%), linear-gradient(180deg, hsl(210 50% 8%) 0%, hsl(210 60% 5%) 100%);
+    --gradient-lime: linear-gradient(135deg, hsl(84 80% 55%) 0%, hsl(70 75% 45%) 100%);
+    --gradient-grey: linear-gradient(135deg, hsl(220 12% 78%) 0%, hsl(220 10% 60%) 100%);
+    --gradient-blue: linear-gradient(135deg, hsl(215 85% 60%) 0%, hsl(225 80% 50%) 100%);
+    --gradient-cyan: linear-gradient(135deg, hsl(188 85% 55%) 0%, hsl(200 80% 45%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(84 80% 55% / 0.3);
+    --shadow-deep: 0 20px 60px -20px hsl(210 80% 2% / 0.8);
+    --shadow-card: 0 8px 32px -12px hsl(210 80% 2% / 0.6);
+
+    /* Motion */
+    --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "cv11";
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  html {
+    @apply dark;
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+  }
+  .font-body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  .text-glow {
+    text-shadow: 0 0 24px hsl(84 80% 55% / 0.55);
+  }
+  .bg-gradient-lime { background-image: var(--gradient-lime); }
+  .bg-gradient-grey { background-image: var(--gradient-grey); }
+  .bg-gradient-blue { background-image: var(--gradient-blue); }
+  .bg-gradient-cyan { background-image: var(--gradient-cyan); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-deep { box-shadow: var(--shadow-deep); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+
+  @keyframes ripple {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(2.2); opacity: 0; }
+  }
+  .animate-ripple { animation: ripple 3s ease-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
