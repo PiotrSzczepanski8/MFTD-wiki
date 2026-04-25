@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 210 40% 9%;
     --popover-foreground: 200 30% 92%;
 
-    /* Lime glow — primary accent */
-    --primary: 84 80% 55%;
+    /* red glow — primary accent */
+    --primary: 0 80% 55%;
     --primary-foreground: 210 50% 8%;
 
     /* Cyan sea — secondary accent */
@@ -37,7 +37,7 @@ All colors MUST be HSL.
 
     --border: 210 30% 16%;
     --input: 210 30% 14%;
-    --ring: 84 80% 55%;
+    --ring: 0 80% 55%;
 
     --radius: 0.75rem;
 
@@ -49,13 +49,13 @@ All colors MUST be HSL.
     /* Gradients */
     --gradient-deep: linear-gradient(180deg, hsl(210 50% 8%) 0%, hsl(210 60% 4%) 100%);
     --gradient-hero: radial-gradient(ellipse at top, hsl(188 70% 25% / 0.4) 0%, transparent 60%), linear-gradient(180deg, hsl(210 50% 8%) 0%, hsl(210 60% 5%) 100%);
-    --gradient-lime: linear-gradient(135deg, hsl(84 80% 55%) 0%, hsl(70 75% 45%) 100%);
+    --gradient-red: linear-gradient(135deg, hsl(0, 80%, 55%) 0%, hsl(0, 75%, 45%) 100%);
     --gradient-grey: linear-gradient(135deg, hsl(220 12% 78%) 0%, hsl(220 10% 60%) 100%);
     --gradient-blue: linear-gradient(135deg, hsl(215 85% 60%) 0%, hsl(225 80% 50%) 100%);
     --gradient-cyan: linear-gradient(135deg, hsl(188 85% 55%) 0%, hsl(200 80% 45%) 100%);
 
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(84 80% 55% / 0.3);
+    --shadow-glow: 0 0 40px hsla(0, 80%, 55%, 0.3);
     --shadow-deep: 0 20px 60px -20px hsl(210 80% 2% / 0.8);
     --shadow-card: 0 8px 32px -12px hsl(210 80% 2% / 0.6);
 
@@ -139,9 +139,9 @@ All colors MUST be HSL.
     font-family: 'Inter', system-ui, sans-serif;
   }
   .text-glow {
-    text-shadow: 0 0 24px hsl(84 80% 55% / 0.55);
+    text-shadow: 0 0 24px hsla(0, 80%, 55%, 0.55);
   }
-  .bg-gradient-lime { background-image: var(--gradient-lime); }
+  .bg-gradient-red { background-image: var(--gradient-red); }
   .bg-gradient-grey { background-image: var(--gradient-grey); }
   .bg-gradient-blue { background-image: var(--gradient-blue); }
   .bg-gradient-cyan { background-image: var(--gradient-cyan); }
