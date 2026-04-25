@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { categoryMeta, wikiEntries } from "@/data/wiki";
+import { categoryMeta, wikiEntries } from "@/wiki";
 import { WikiCard } from "@/components/wiki/WikiCard";
 
 const Wiki = () => {

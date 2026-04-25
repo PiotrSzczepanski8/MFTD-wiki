@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { addComment, deleteComment, deletePost, getPostById, toggleLike } from "@/lib/storage";
-import { useAuth } from "@/hooks/useAuth";
+import { addComment, deleteComment, deletePost, getPostById, toggleLike } from "@/storage";
+import { useAuth } from "@/useAuth";
 
 const IdeaDetail = () => {
   const { id } = useParams();

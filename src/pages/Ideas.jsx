@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { createPost, getPosts } from "@/lib/storage";
-import { useAuth } from "@/hooks/useAuth";
+import { createPost, getPosts } from "@/storage";
+import { useAuth } from "@/useAuth";
 
 const Ideas = () => {
   const { user } = useAuth();

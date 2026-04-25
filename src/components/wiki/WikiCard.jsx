@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { RarityBadge } from "@/components/wiki/RarityBadge";
-import { categoryMeta } from "@/data/wiki";
+import { categoryMeta } from "@/wiki";
 
 export const WikiCard = ({ entry }) => {
   const meta = categoryMeta[entry.category] || { gradient: "bg-muted", label: "Unknown" };

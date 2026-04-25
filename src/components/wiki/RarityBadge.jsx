@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 const styles = {
   common: "bg-muted text-muted-foreground border-border",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { useAuth } from "@/hooks/useAuth";
-import { getUserPosts } from "@/lib/storage";
+import { useAuth } from "@/useAuth";
+import { getUserPosts } from "@/storage";
 
 const Profile = () => {
   const { user, loading, updateProfile } = useAuth();

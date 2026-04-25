@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { categoryMeta, wikiEntries } from "@/data/wiki";
+import { categoryMeta, wikiEntries } from "@/wiki";
 
 const Index = () => {
   const featured = wikiEntries.filter((entry) => entry.rarity === "legendary").slice(0, 3);

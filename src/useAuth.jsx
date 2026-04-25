@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCurrentUser, signIn as storageSignIn, signUp as storageSignUp, signOut as storageSignOut, updateProfile as storageUpdateProfile } from "@/lib/storage";
+import { getCurrentUser, signIn as storageSignIn, signUp as storageSignUp, signOut as storageSignOut, updateProfile as storageUpdateProfile } from "@/storage";
 
 const AuthContext = createContext(null);
 

@@ -1,8 +1,8 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { categoryMeta } from "@/data/wiki";
+import { categoryMeta } from "@/wiki";
 import { useMemo } from "react";
 import { RarityBadge } from "@/components/wiki/RarityBadge";
-import { wikiEntries } from "@/data/wiki";
+import { wikiEntries } from "@/wiki";
 
 const WikiDetail = () => {
   const { id } = useParams();

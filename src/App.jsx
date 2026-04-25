@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { AuthProvider } from "@/hooks/useAuth";
+import { AuthProvider } from "@/useAuth";
 import { Layout } from "@/components/layout/Layout";
 import Index from "@/pages/Index";
 import Wiki from "@/pages/Wiki";
