@@ -106,10 +106,19 @@ export const wikiEntries = [
     id: crypto.randomUUID(),
     category: "mechanics",
     title: "Magic",
-    description: "Roll 1d6. On 6, all fish on screen take 200 damage. On 1, your gold halves.",
-    stats: { cost: 50, cooldown: "20s", risk: "high" },
-    tags: ["gamble", "burst"],
-    rarity: "uncommon",
-    image: "/images/dice-of-fortune.jpg",
+    description: "A powerful gambling mechanic that unleashes a magic burst dealing area damage and slowing all enemies, but risks rebellion that freezes all towers. Press Q to cast when available. Magic has a rebellion chance that increases with each successful cast and wave progression, potentially causing a rebellion that temporarily disables all towers. Use Purify to reduce the rebellion chance, with costs decreasing over waves and effectiveness increasing.",
+    stats: { 
+      cost: 35, 
+      damage: 30, 
+      slow_multiplier: 0.6, 
+      slow_duration: 5.0, 
+      cooldown: 12.0, 
+      rebellion_start_chance: 0.05, 
+      rebellion_cap: 0.60, 
+      purify_cost_start: 20, 
+      purify_cost_min: 10 
+    },
+    tags: ["gamble", "area-damage", "slow", "cooldown", "rebellion-risk"],
+    rarity: "common"
   },
 ];
