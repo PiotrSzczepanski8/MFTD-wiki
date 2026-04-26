@@ -44,7 +44,7 @@ export const wikiEntries = [
     title: "Harpoon Angler",
     description: "A precision marksman whose harpoons hit enemies at a distance.",
     stats: { damage: 50, range: 384, type: "sniper", cost: 200, capacity: 9 },
-    tags: ["sniper", "long-range", "elite"],
+    tags: ["sniper", "long-range", "elite", "single-target"],
     rarity: "legendary",
     image: "/images/sniper.png",
   },

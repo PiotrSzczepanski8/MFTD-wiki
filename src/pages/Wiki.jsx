@@ -8,6 +8,7 @@ const Wiki = () => {
   const initial = params.get("category") || "all";
   const [filter, setFilter] = useState(initial);
   const [query, setQuery] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const setFilterAndUrl = (newFilter) => {
     setFilter(newFilter);
@@ -18,6 +19,22 @@ const Wiki = () => {
     }
   };
 
+  const allTags = useMemo(() => {
+    const tagSet = new Set();
+    wikiEntries.forEach(entry => {
+      entry.tags.forEach(tag => tagSet.add(tag));
+    });
+    return Array.from(tagSet).sort();
+  }, []);
+
+  const toggleTag = (tag) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag) 
+        : [...prev, tag]
+    );
+  };
+
   const filtered = useMemo(() => {
     const search = query.trim().toLowerCase();
     return wikiEntries.filter((entry) => {
@@ -26,9 +43,10 @@ const Wiki = () => {
         entry.title.toLowerCase().includes(search) ||
         entry.description.toLowerCase().includes(search) ||
         entry.tags.some((tag) => tag.toLowerCase().includes(search));
-      return matchCategory && matchQuery;
+      const matchTags = selectedTags.length === 0 || selectedTags.every(tag => entry.tags.includes(tag));
+      return matchCategory && matchQuery && matchTags;
     });
-  }, [filter, query]);
+  }, [filter, query, selectedTags]);
 
   return (
     <div className="container py-10">
@@ -72,6 +90,40 @@ const Wiki = () => {
           );
         })}
       </div>
+
+      {allTags.length > 0 && (
+        <div className="mb-8">
+          <h3 className="text-sm font-semibold text-muted-foreground mb-3">Filter by Tags</h3>
+          <div className="flex flex-wrap gap-2">
+            {allTags.map((tag) => {
+              const isSelected = selectedTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag(tag)}
+                  className={`rounded-full px-3 py-1 text-xs font-medium transition ${
+                    isSelected 
+                      ? "bg-primary text-primary-foreground" 
+                      : "border border-border/60 bg-card/60 text-muted-foreground hover:bg-card"
+                  }`}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+          {selectedTags.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setSelectedTags([])}
+              className="mt-2 text-xs text-muted-foreground hover:text-foreground transition"
+            >
+              Clear all tags
+            </button>
+          )}
+        </div>
+      )}
 
       {filtered.length === 0 ? (
         <div className="text-center py-16 text-muted-foreground">

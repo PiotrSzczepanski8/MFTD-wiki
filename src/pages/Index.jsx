@@ -18,7 +18,7 @@ const Index = () => {
             <span className="text-primary text-glow italic">Cast wisely.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
-            A community-built field guide for <strong className="text-foreground">Magical Fih TD</strong> — the fishing tower defense where every wave is a gamble.
+            A community-built field guide for <strong className="text-foreground">Magical Fih TD</strong> - the fishing tower defense where every wave is a gamble.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link to="/wiki" className="inline-flex items-center gap-2 rounded-full bg-gradient-red px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow hover:opacity-90 transition">
