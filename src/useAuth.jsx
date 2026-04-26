@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const signUp = async (email, password, username) => {
-    const nextUser = await storageSignUp({ email, password, username });
+    const nextUser = await storage.signUp({ email, password, username });
     setUser(nextUser);
     return nextUser;
   };
