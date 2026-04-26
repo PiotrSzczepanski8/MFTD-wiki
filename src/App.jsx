@@ -9,6 +9,7 @@ import Ideas from "@/pages/Ideas";
 import IdeaDetail from "@/pages/IdeaDetail";
 import Auth from "@/pages/Auth";
 import Profile from "@/pages/Profile";
+import About from "@/pages/About";
 import NotFound from "@/pages/NotFound";
 
 const ScrollToTop = () => {
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/ideas/:id" element={<IdeaDetail />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
