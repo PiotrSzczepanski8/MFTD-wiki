@@ -24,7 +24,7 @@ const WikiDetail = () => {
         <div className={`h-2 ${meta.gradient}`} />
         {(entry.category === "fishermen" || entry.category === "fish") && entry.image && (
           <div className="aspect-[21/9] overflow-hidden bg-muted/30 border-b border-border/40">
-            <img src={entry.image} alt={entry.title} className="h-full w-full object-cover" />
+            <img src={entry.image} alt={entry.title} className="h-full w-full object-contain pixel-art" />
           </div>
         )}
         <div className="p-8">

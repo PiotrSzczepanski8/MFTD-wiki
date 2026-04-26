@@ -149,6 +149,13 @@ All colors MUST be HSL.
   .shadow-deep { box-shadow: var(--shadow-deep); }
   .shadow-card { box-shadow: var(--shadow-card); }
 
+  /* Pixel art rendering - prevents blurriness */
+  .pixel-art {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
   @keyframes float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-12px) rotate(2deg); }

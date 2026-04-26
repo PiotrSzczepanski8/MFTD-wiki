@@ -34,7 +34,7 @@ const Wiki = () => {
     <div className="container py-10">
       <div className="mb-8">
         <h1 className="font-display text-4xl md:text-5xl font-bold mb-2">The Codex</h1>
-        <p className="text-muted-foreground">Every fisherman, fish, and gamble — catalogued.</p>
+        <p className="text-muted-foreground">Every fisherman, fish, and mechanic - catalogued.</p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
