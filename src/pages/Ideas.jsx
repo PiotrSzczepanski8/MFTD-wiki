@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { createPost, getPosts } from "@/storage";
-import { useAuth } from "@/useAuth";
+import storage from "@/storage";
+import auth from "@/useAuth";
 
 const Ideas = () => {
-  const { user } = useAuth();
+  const { user } = auth.useAuth();
   const [posts, setPosts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ title: "", content: "" });
   const [message, setMessage] = useState(null);
 
   const load = () => {
-    setPosts(getPosts());
+    setPosts(storage.getPosts());
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Ideas = () => {
     }
 
     try {
-      await createPost({ title: form.title.trim(), content: form.content.trim() });
+      await storage.createPost({ title: form.title.trim(), content: form.content.trim() });
       setForm({ title: "", content: "" });
       setShowForm(false);
       setMessage({ type: "success", text: "Idea posted to the deep." });

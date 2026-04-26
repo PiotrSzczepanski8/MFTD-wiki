@@ -1,4 +1,4 @@
-import { cn } from "@/utils";
+import cn from "@/utils";
 
 const styles = {
   common: "bg-muted text-muted-foreground border-border",
@@ -8,8 +8,10 @@ const styles = {
   legendary: "bg-primary/20 text-primary border-primary/50 shadow-glow",
 };
 
-export const RarityBadge = ({ rarity }) => (
+const RarityBadge = ({ rarity }) => (
   <span className={cn("rounded-full border px-2 py-1 text-xs font-medium capitalize", styles[rarity] || styles.common)}>
     {rarity}
   </span>
 );
+
+export default RarityBadge;

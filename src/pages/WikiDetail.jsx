@@ -1,18 +1,17 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { categoryMeta } from "@/wiki";
+import wikiData from "@/wiki";
 import { useMemo } from "react";
-import { RarityBadge } from "@/components/wiki/RarityBadge";
-import { wikiEntries } from "@/wiki";
+import RarityBadge from "@/components/wiki/RarityBadge";
 
 const WikiDetail = () => {
   const { id } = useParams();
-  const entry = useMemo(() => wikiEntries.find((item) => item.id === id), [id]);
+  const entry = useMemo(() => wikiData.wikiEntries.find((item) => item.id === id), [id]);
 
   if (!entry) {
     return <Navigate to="/wiki" replace />;
   }
 
-  const meta = categoryMeta[entry.category] || { gradient: "bg-muted", label: "Unknown" };
+  const meta = wikiData.categoryMeta[entry.category] || { gradient: "bg-muted", label: "Unknown" };
 
   return (
     <div className="container py-10 max-w-3xl">

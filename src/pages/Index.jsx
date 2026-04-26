@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { categoryMeta, wikiEntries } from "@/wiki";
+import wikiData from "@/wiki";
 
 const Index = () => {
-  const featured = wikiEntries.filter((entry) => entry.rarity === "legendary").slice(0, 3);
+  const featured = wikiData.wikiEntries.filter((entry) => entry.rarity === "legendary").slice(0, 3);
 
   return (
     <div>
@@ -33,9 +33,9 @@ const Index = () => {
 
       <section className="container py-16">
         <div className="grid md:grid-cols-3 gap-5">
-          {Object.keys(categoryMeta).map((key) => {
-            const meta = categoryMeta[key];
-            const count = wikiEntries.filter((entry) => entry.category === key).length;
+          {Object.keys(wikiData.categoryMeta).map((key) => {
+            const meta = wikiData.categoryMeta[key];
+            const count = wikiData.wikiEntries.filter((entry) => entry.category === key).length;
             return (
               <Link key={key} to={`/wiki?category=${key}`} className="block rounded-3xl border border-border/60 bg-card/60 p-6 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-card">
                 <div className={`relative inline-flex h-12 w-12 items-center justify-center rounded-xl ${meta.gradient} mb-4 shadow-card`}>
@@ -61,7 +61,7 @@ const Index = () => {
         <div className="grid md:grid-cols-3 gap-5">
           {featured.map((entry) => (
             <Link key={entry.id} to={`/wiki/${entry.id}`} className="block rounded-3xl border border-border/60 bg-card/60 p-6 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
-              <p className="text-xs uppercase tracking-widest text-primary mb-2">{categoryMeta[entry.category]?.label}</p>
+              <p className="text-xs uppercase tracking-widest text-primary mb-2">{wikiData.categoryMeta[entry.category]?.label}</p>
               <h3 className="font-display text-2xl font-bold mb-2">{entry.title}</h3>
               <p className="text-sm text-muted-foreground">{entry.description}</p>
             </Link>

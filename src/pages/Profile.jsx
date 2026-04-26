@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { useAuth } from "@/useAuth";
-import { getUserPosts } from "@/storage";
+import auth from "@/useAuth";
+import storage from "@/storage";
 
 const Profile = () => {
-  const { user, loading, updateProfile } = useAuth();
+  const { user, loading, updateProfile } = auth.useAuth();
   const [form, setForm] = useState({ username: "", bio: "" });
   const [posts, setPosts] = useState([]);
   const [message, setMessage] = useState(null);
@@ -13,7 +13,7 @@ const Profile = () => {
   useEffect(() => {
     if (user) {
       setForm({ username: user.username || "", bio: user.bio || "" });
-      setPosts(getUserPosts(user.id));
+      setPosts(storage.getUserPosts(user.id));
     }
   }, [user]);
 

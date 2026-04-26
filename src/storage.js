@@ -11,7 +11,7 @@ const defaultStore = {
 const encodeUtf8 = (text) => new TextEncoder().encode(text);
 const hexFromBuffer = (buffer) => Array.from(new Uint8Array(buffer)).map((b) => b.toString(16).padStart(2, "0")).join("");
 
-export async function hashText(text) {
+async function hashText(text) {
   const buffer = encodeUtf8(text);
   const digest = await crypto.subtle.digest("SHA-256", buffer);
   return hexFromBuffer(digest);
@@ -48,7 +48,7 @@ function getLikeCount(store, postId) {
   return store.likes.filter((like) => like.postId === postId).length;
 }
 
-export async function signUp({ email, password, username }) {
+async function signUp({ email, password, username }) {
   const store = loadStore();
   const existing = store.users.find((user) => user.email === email.toLowerCase());
   if (existing) {
@@ -70,7 +70,7 @@ export async function signUp({ email, password, username }) {
   return { ...user, passwordHash: undefined };
 }
 
-export async function signIn({ email, password }) {
+async function signIn({ email, password }) {
   const store = loadStore();
   const passwordHash = await hashText(password);
   const user = store.users.find(
@@ -84,13 +84,13 @@ export async function signIn({ email, password }) {
   return { ...user, passwordHash: undefined };
 }
 
-export function signOut() {
+function signOut() {
   const store = loadStore();
   store.currentUserId = null;
   saveStore(store);
 }
 
-export function getCurrentUser() {
+function getCurrentUser() {
   const store = loadStore();
   const user = store.users.find((item) => item.id === store.currentUserId);
   if (!user) {
@@ -100,7 +100,7 @@ export function getCurrentUser() {
   return safe;
 }
 
-export async function updateProfile({ username, bio }) {
+async function updateProfile({ username, bio }) {
   const store = loadStore();
   const user = store.users.find((item) => item.id === store.currentUserId);
   if (!user) {
@@ -113,7 +113,7 @@ export async function updateProfile({ username, bio }) {
   return safe;
 }
 
-export function getPosts() {
+function getPosts() {
   const store = loadStore();
   return store.posts
     .slice()
@@ -126,7 +126,7 @@ export function getPosts() {
     }));
 }
 
-export function getPostById(postId) {
+function getPostById(postId) {
   const store = loadStore();
   const post = store.posts.find((item) => item.id === postId);
   if (!post) return null;
@@ -147,12 +147,12 @@ export function getPostById(postId) {
   };
 }
 
-export function hasLiked(postId) {
+function hasLiked(postId) {
   const store = loadStore();
   return store.likes.some((like) => like.postId === postId && like.userId === store.currentUserId);
 }
 
-export function getUserPosts(userId) {
+function getUserPosts(userId) {
   const store = loadStore();
   return store.posts
     .filter((post) => post.userId === userId)
@@ -163,7 +163,7 @@ export function getUserPosts(userId) {
     }));
 }
 
-export function createPost({ title, content }) {
+function createPost({ title, content }) {
   const store = loadStore();
   const currentUser = store.users.find((item) => item.id === store.currentUserId);
   if (!currentUser) {
@@ -186,7 +186,7 @@ export function createPost({ title, content }) {
   };
 }
 
-export function toggleLike(postId) {
+function toggleLike(postId) {
   const store = loadStore();
   const currentUser = store.users.find((item) => item.id === store.currentUserId);
   if (!currentUser) {
@@ -211,7 +211,7 @@ export function toggleLike(postId) {
   };
 }
 
-export function addComment(postId, content) {
+function addComment(postId, content) {
   const store = loadStore();
   const currentUser = store.users.find((item) => item.id === store.currentUserId);
   if (!currentUser) {
@@ -232,7 +232,7 @@ export function addComment(postId, content) {
   };
 }
 
-export function deletePost(postId) {
+function deletePost(postId) {
   const store = loadStore();
   const currentUser = store.users.find((item) => item.id === store.currentUserId);
   const post = store.posts.find((item) => item.id === postId);
@@ -245,7 +245,7 @@ export function deletePost(postId) {
   saveStore(store);
 }
 
-export function deleteComment(commentId) {
+function deleteComment(commentId) {
   const store = loadStore();
   const currentUser = store.users.find((item) => item.id === store.currentUserId);
   const comment = store.comments.find((item) => item.id === commentId);
@@ -255,3 +255,21 @@ export function deleteComment(commentId) {
   store.comments = store.comments.filter((item) => item.id !== commentId);
   saveStore(store);
 }
+
+export default {
+  hashText,
+  signUp,
+  signIn,
+  signOut,
+  getCurrentUser,
+  updateProfile,
+  getPosts,
+  getPostById,
+  hasLiked,
+  getUserPosts,
+  createPost,
+  toggleLike,
+  addComment,
+  deletePost,
+  deleteComment,
+};

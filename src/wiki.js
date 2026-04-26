@@ -1,4 +1,4 @@
-export const categoryMeta = {
+const categoryMeta = {
   fishermen: {
     label: "Fishermen",
     tagline: "The towers that defend the dock.",
@@ -16,7 +16,7 @@ export const categoryMeta = {
   },
 };
 
-export const wikiEntries = [
+const wikiEntries = [
   // fishermen
   {
     id: crypto.randomUUID(),
@@ -122,3 +122,5 @@ export const wikiEntries = [
     rarity: "common"
   },
 ];
+
+export default { categoryMeta, wikiEntries };

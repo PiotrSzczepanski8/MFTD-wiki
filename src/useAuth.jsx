@@ -1,19 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCurrentUser, signIn as storageSignIn, signUp as storageSignUp, signOut as storageSignOut, updateProfile as storageUpdateProfile } from "@/storage";
+import storage from "@/storage";
 
 const AuthContext = createContext(null);
 
-export const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setUser(getCurrentUser());
+    setUser(storage.getCurrentUser());
     setLoading(false);
   }, []);
 
   const signIn = async (email, password) => {
-    const nextUser = await storageSignIn({ email, password });
+    const nextUser = await storage.signIn({ email, password });
     setUser(nextUser);
     return nextUser;
   };
@@ -25,12 +25,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
-    storageSignOut();
+    storage.signOut();
     setUser(null);
   };
 
   const updateProfile = async (profile) => {
-    const nextUser = await storageUpdateProfile(profile);
+    const nextUser = await storage.updateProfile(profile);
     setUser(nextUser);
     return nextUser;
   };
@@ -42,10 +42,12 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-export const useAuth = () => {
+const useAuth = () => {
   const ctx = useContext(AuthContext);
   if (!ctx) {
     throw new Error("useAuth must be used within AuthProvider");
   }
   return ctx;
 };
+
+export default { AuthProvider, useAuth };

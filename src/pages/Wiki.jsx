@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { categoryMeta, wikiEntries } from "@/wiki";
-import { WikiCard } from "@/components/wiki/WikiCard";
+import wikiData from "@/wiki";
+import WikiCard from "@/components/wiki/WikiCard";
 
 const Wiki = () => {
   const [params, setParams] = useSearchParams();
@@ -21,7 +21,7 @@ const Wiki = () => {
 
   const allTags = useMemo(() => {
     const tagSet = new Set();
-    wikiEntries.forEach(entry => {
+    wikiData.wikiEntries.forEach(entry => {
       entry.tags.forEach(tag => tagSet.add(tag));
     });
     return Array.from(tagSet).sort();
@@ -37,7 +37,7 @@ const Wiki = () => {
 
   const filtered = useMemo(() => {
     const search = query.trim().toLowerCase();
-    return wikiEntries.filter((entry) => {
+    return wikiData.wikiEntries.filter((entry) => {
       const matchCategory = filter === "all" || entry.category === filter;
       const matchQuery = !search ||
         entry.title.toLowerCase().includes(search) ||
@@ -73,10 +73,10 @@ const Wiki = () => {
           onClick={() => setFilterAndUrl("all")}
           className={`rounded-full px-4 py-2 text-sm font-medium transition ${filter === "all" ? "bg-primary text-primary-foreground" : "border border-border/60 bg-card/60 text-muted-foreground hover:bg-card"}`}
         >
-          All ({wikiEntries.length})
+          All ({wikiData.wikiEntries.length})
         </button>
-        {Object.keys(categoryMeta).map((cat) => {
-          const count = wikiEntries.filter((entry) => entry.category === cat).length;
+        {Object.keys(wikiData.categoryMeta).map((cat) => {
+          const count = wikiData.wikiEntries.filter((entry) => entry.category === cat).length;
           const active = filter === cat;
           return (
             <button
@@ -85,7 +85,7 @@ const Wiki = () => {
               onClick={() => setFilterAndUrl(cat)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition ${active ? "bg-primary text-primary-foreground" : "border border-border/60 bg-card/60 text-muted-foreground hover:bg-card"}`}
             >
-              {categoryMeta[cat].label} ({count})
+              {wikiData.categoryMeta[cat].label} ({count})
             </button>
           );
         })}

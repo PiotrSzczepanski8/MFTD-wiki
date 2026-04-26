@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "@/useAuth";
+import auth from "@/useAuth";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -8,8 +8,8 @@ const navItems = [
   { to: "/about", label: "About" },
 ];
 
-export const Navbar = () => {
-  const { user, signOut } = useAuth();
+const Navbar = () => {
+  const { user, signOut } = auth.useAuth();
   const navigate = useNavigate();
 
   const scrollToTop = () => {
@@ -89,3 +89,5 @@ export const Navbar = () => {
     </header>
   );
 };
+
+export default Navbar;

@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { addComment, deleteComment, deletePost, getPostById, toggleLike } from "@/storage";
-import { useAuth } from "@/useAuth";
+import storage from "@/storage";
+import auth from "@/useAuth";
 
 const IdeaDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user } = auth.useAuth();
   const [post, setPost] = useState(null);
   const [comment, setComment] = useState("");
   const [message, setMessage] = useState(null);
   const [liked, setLiked] = useState(false);
 
   const load = () => {
-    const nextPost = getPostById(id);
+    const nextPost = storage.getPostById(id);
     if (!nextPost) {
       navigate("/ideas");
       return;
@@ -28,7 +28,7 @@ const IdeaDetail = () => {
 
   const handleLike = () => {
     try {
-      const result = toggleLike(id);
+      const result = storage.toggleLike(id);
       setLiked(result.liked);
       setPost((current) => current ? { ...current, likes_count: result.likes_count } : current);
     } catch (error) {
@@ -44,7 +44,7 @@ const IdeaDetail = () => {
       return;
     }
     try {
-      addComment(id, comment.trim());
+      storage.addComment(id, comment.trim());
       setComment("");
       setMessage({ type: "success", text: "Comment added." });
       load();
@@ -55,7 +55,7 @@ const IdeaDetail = () => {
 
   const removeComment = (commentId) => {
     try {
-      deleteComment(commentId);
+      storage.deleteComment(commentId);
       setMessage({ type: "success", text: "Comment removed." });
       load();
     } catch (error) {
@@ -68,7 +68,7 @@ const IdeaDetail = () => {
       return;
     }
     try {
-      deletePost(id);
+      storage.deletePost(id);
       navigate("/ideas");
     } catch (error) {
       setMessage({ type: "error", text: error.message });

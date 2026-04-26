@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="container py-10">
-      {/* Header */}
       <div className="mb-12">
         <h1 className="font-display text-4xl md:text-5xl font-bold mb-2">Magical Fih TD</h1>
         <p className="text-lg text-muted-foreground mb-4">
@@ -14,7 +13,6 @@ const About = () => {
         </p>
       </div>
 
-      {/* Game Versions */}
       <div className="grid md:grid-cols-2 gap-4 mb-12">
         <a href="https://artificialidiots.itch.io/mg-fih-td" target="_blank" className="bg-card/60 border border-border/40 hover:border-primary/40 rounded-lg p-6 transition">
           <h3 className="text-lg font-bold mb-2">🐟 Alpha Version</h3>
@@ -32,9 +30,7 @@ const About = () => {
         </a>
       </div>
 
-      {/* Game Overview */}
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        {/* Lore Section */}
         <div className="space-y-6">
           <div>
             <h2 className="text-3xl font-bold mb-4">The Story</h2>
@@ -47,7 +43,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Gameplay Section */}
         <div className="space-y-6">
           <div>
             <h2 className="text-3xl font-bold mb-4">How to Play</h2>
@@ -78,7 +73,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Additional Resources */}
       <div className="grid md:grid-cols-3 gap-6 mb-12">
         <div className="bg-card/60 border border-border/40 rounded-lg p-6">
           <h3 className="text-xl font-bold mb-3">📖 Wiki</h3>
@@ -111,7 +105,6 @@ const About = () => {
         </div>
       </div>
 
-      {/* Challenge Section */}
       <div className="bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-lg p-8 text-center">
         <h2 className="text-2xl font-bold mb-2">Ready to Defend the Village?</h2>
         <p className="text-muted-foreground mb-6">

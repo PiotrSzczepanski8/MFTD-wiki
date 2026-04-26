@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { RarityBadge } from "@/components/wiki/RarityBadge";
-import { categoryMeta } from "@/wiki";
+import RarityBadge from "@/components/wiki/RarityBadge";
+import wikiData from "@/wiki";
 
-export const WikiCard = ({ entry }) => {
-  const meta = categoryMeta[entry.category] || { gradient: "bg-muted", label: "Unknown" };
+const WikiCard = ({ entry }) => {
+  const meta = wikiData.categoryMeta[entry.category] || { gradient: "bg-muted", label: "Unknown" };
   const showImage = entry.category === "fishermen" || entry.category === "fish";
 
   return (
@@ -41,3 +41,5 @@ export const WikiCard = ({ entry }) => {
     </Link>
   );
 };
+
+export default WikiCard;

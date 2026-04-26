@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { AuthProvider } from "@/useAuth";
-import { Layout } from "@/components/layout/Layout";
+import auth from "@/useAuth";
+import Layout from "@/components/layout/Layout";
 import Index from "@/pages/Index";
 import Wiki from "@/pages/Wiki";
 import WikiDetail from "@/pages/WikiDetail";
@@ -25,7 +25,7 @@ const ScrollToTop = () => {
 const App = () => (
   <BrowserRouter>
     <ScrollToTop />
-    <AuthProvider>
+    <auth.AuthProvider>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Index />} />
@@ -39,7 +39,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </AuthProvider>
+    </auth.AuthProvider>
   </BrowserRouter>
 );
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
-import { useAuth } from "@/useAuth";
+import auth from "@/useAuth";
 
 const Auth = () => {
-  const { user, signIn, signUp } = useAuth();
+  const { user, signIn, signUp } = auth.useAuth();
   const navigate = useNavigate();
   const [params, setParams] = useSearchParams();
   const [mode, setMode] = useState(
